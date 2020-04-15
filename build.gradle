@@ -1,27 +1,21 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'org.gretty:gretty:+'
-    }
+plugins {
+    id 'war'
+    id 'org.gretty' version '3.0.2'
 }
-
-apply plugin: 'war'
-apply plugin: 'org.gretty'
-
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 repositories {
-    maven { url 'https://mavensync.zkoss.org/eval' }
     mavenCentral()
+    jcenter()
+    maven { url 'https://mavensync.zkoss.org/eval' }
+    // for com.lowagie:itext:2.1.7.js6
+    maven { url 'https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/' }
 }
 
 dependencies {
-    compile "org.zkoss.zk:zul:${zkVersion}"
-    compile "org.zkoss.zk:zkmax:${zkVersion}"
+    implementation "org.zkoss.zk:zul:${zkVersion}"
+    implementation "org.zkoss.zk:zkmax:${zkVersion}"
 }
 
 gretty {
